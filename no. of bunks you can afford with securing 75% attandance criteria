@@ -1,0 +1,102 @@
+//no. of bunks you can afford with securing 75% attandance criteria
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int branch;     //for branch
+    int grp_num;    //for group number in labs (1 or 2)
+
+    printf("\nEnter 0 for CSE;\nEnter 1 for AI/ML;\nEnter 2 for EEE;\nEnter 3 for ECE;\nEnter 4 for CE & ME;n\nWhich of these branch is your's :");
+    scanf("%d", &branch);
+
+    if(branch>4 || branch<0)
+    {
+        printf("Invalid input for group number, restart program again.");
+        return 1;
+    }
+
+    if(branch==4)
+    {
+        grp_num=1;
+    }
+    else
+    {
+    printf("\nEnter your group number (1 or 2) for labs (applicable for PH Labs and EE Labs only):");
+        scanf("%d", &grp_num);
+    }
+
+    printf("\n\n\n");
+
+
+
+    if(grp_num>2 || grp_num<1)
+    {
+        printf("Invalid input for group number, restart program again.\n");
+        return 1;
+    }
+
+
+    // CSE
+    int cse_1[] = {39, 39, 39, 27, 22, 9, 12, 9, 10, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+    int cse_2[] = {39, 39, 39, 27, 22, 9, 8, 10, 12, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+
+    // AI/ML
+    int aiml_1[] = {35, 39, 39, 31, 22, 10, 12, 9, 10, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+    int aiml_2[] = {35, 39, 39, 31, 22, 10, 12, 10, 9, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+
+    // EEE
+    int eee_1[] = {38, 40, 42, 30, 22, 9, 9, 10, 9, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+    int eee_2[] = {38, 40, 42, 30, 22, 9, 9, 9, 10, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+
+    // ECE
+    int ece_1[] = {43, 39, 39, 27, 22, 10, 9, 8, 10, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+    int ece_2[] = {43, 39, 39, 27, 22, 10, 9, 10, 8, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+
+    //CE & ME
+    int ce_me[] = {37, 37, 27, 28, 22, 8, 12, 10, 9, 10};  // {PPS, PH, MA, EE, BSC, Communication Skills, PPS Lab, PH Lab, EE Lab, NSS/PT}
+
+    char sub[][60]={"PPS","PH","MA","EE","BSC","Communication Skills","PPS LAB","PH LAB","EE LAB","NNS/PT"};
+
+    int *branch_grp;
+
+    switch(branch)
+    {
+        case 0:
+        branch_grp= (grp_num==1) ? cse_1 : cse_2 ;
+        break;
+        case 1:
+        branch_grp= (grp_num==1) ? aiml_1 : aiml_2 ;
+        break;
+        case 2:
+        branch_grp= (grp_num==1) ? eee_1 : eee_2 ;
+        break;
+        case 3:
+        branch_grp= (grp_num==1) ? ece_1 : ece_2 ;
+        break;
+        case 4:
+        branch_grp= ce_me ;
+    }
+
+        int bunks=0;
+        int total=0;
+
+        for(int i=0;i<10;i++)
+        {
+            printf("In %s total class you can bunk : %d , Total no of classes is %d\n\n",sub[i],(int)floor(0.25 * branch_grp[i]),branch_grp[i]);
+            bunks+=(int)floor(0.25 * branch_grp[i]);
+            total+=branch_grp[i];
+
+        }
+
+        printf("So total no. of bunks are : %d\n\n",bunks);
+        printf("So total no. of classes are : %d\n\n",total);
+
+
+
+
+    return 0;
+}
+
+
