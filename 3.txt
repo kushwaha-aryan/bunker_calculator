@@ -1,0 +1,16 @@
+# Taking inputs
+set1 = list(map(int, input("Enter elements of set1 separated by spaces: ").split()))
+set2 = list(map(int, input("Enter elements of set2 separated by spaces: ").split()))
+set3 = list(map(int, input("Enter elements of set3 separated by spaces: ").split()))
+
+# Build relations
+R1 = list(zip(set1, set2))
+R2 = list(zip(set3, set2))
+
+# Composition: (a, c) if (a, b) in R1 and (b, c) in R2
+composition = [(a, c) for a, b in R1 for d, c in R2 if b == d]
+
+# Output
+print("R1 =", R1)
+print("R2 =", R2)
+print("Composition =", composition)

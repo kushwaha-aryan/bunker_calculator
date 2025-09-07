@@ -1,0 +1,46 @@
+A=[1,2,3,4]
+B=['a','b','c','d']
+
+f = {}
+for i in range(len(A)):
+    f[A[i]] = B[i]    
+
+print(f)
+
+
+outt=[f[i] for i in A]
+
+print (outt)
+
+
+
+
+# Check if F is injective
+if len(set(outt)) == len(A):
+    print("F is injective") 
+    injective = True
+else:
+    print("F is not injective")
+    injective = False
+
+
+
+# Check if F is surjective
+tempp=[]
+for i in range(len(B)):
+    tempp.append(f[A[i]])
+if len(set(tempp)) == len(B):
+    print("F is surjective")
+    surjective = True
+
+else:
+    print("F is not surjective")
+    surjective = False
+
+print(tempp)
+
+# Check if F is bijective
+if injective and surjective:
+    print("F is bijective")  
+else:
+    print("F is not bijective")

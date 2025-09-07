@@ -1,0 +1,9 @@
+seet = {int(i) for i in input("Enter the first list : ").split()}
+seett = {int(i) for i in input("Enter the second list : ").split()}
+cartesianProduct = []
+for i in seet:
+    for j in seett:
+        result = (i , j)
+        cartesianProduct.append(result)
+print("cartesianProduct = ")
+print(cartesianProduct)

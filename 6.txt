@@ -1,0 +1,70 @@
+import random
+import math
+import matplotlib.pyplot as plt
+# Simulate tossing a fair coin 10 times
+head=0
+tails=0
+
+for i in range(10):
+    toss=random.choice(["HEADS", "TAILS"])
+    if toss=="HEADS":
+        head+=1
+    elif toss=="TAILS":
+        tails+=1
+
+head=head/10
+tails=tails/10
+
+print("HEADS=",head)
+
+
+print("TAILS=",tails)
+
+
+
+
+
+
+
+
+# Binomial Distribution Calculation
+
+
+
+n = int(input("Enter total number of trials: "))
+r = int(input("Enter number of successes (r): "))
+
+p = 0.5  
+
+nCr = math.factorial(n) // (math.factorial(r) * math.factorial(n-r))
+
+binomial_dist = nCr * (p**r) * ((1-p)**(n-r))
+
+print("Binomial distribution =", binomial_dist)
+
+
+
+
+
+
+
+
+
+# Plotting the Probability Distribution
+
+probs = []   
+r_values = list(range(n+1))  
+
+for r in r_values:
+    nCr = math.factorial(n) // (math.factorial(r) * math.factorial(n-r))
+    prob = nCr * (p**r) * ((1-p)**(n-r))
+    probs.append(prob)
+print("Probability of exactly 5 heads =", probs[5])
+
+# Ploting the distribution
+plt.bar(r_values, probs, color="pink", edgecolor="black")
+plt.title("Binomial Distribution: Coin Toss (n=10, p=0.5)")
+plt.xlabel("Number of Heads")
+plt.ylabel("Probability")
+plt.xticks(r_values)
+plt.show()

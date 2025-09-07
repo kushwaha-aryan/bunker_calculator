@@ -1,0 +1,24 @@
+rangee = [1, 2, 3, 4]
+
+Fx = []
+Gx = []
+
+for x in rangee:
+    Fx.append(2 * x + 3)
+
+for x in rangee:
+    Gx.append(x ** 2)
+
+fogx = []
+gofx = []
+
+for x in Gx:
+    fogx.append(2 * x + 3)
+
+for x in Fx:
+    gofx.append(x ** 2)
+
+print("Fx =", Fx)
+print("Gx =", Gx)
+print("f(g(x)) =", fogx)
+print("g(f(x)) =", gofx)

@@ -1,0 +1,18 @@
+import math
+import matplotlib.pyplot as plt
+
+prob = []
+lamda = 3
+
+for i in range(0, 7): 
+    p = (math.exp(-lamda) * (lamda**i)) / math.factorial(i)
+    prob.append(p)
+
+print(prob)
+
+# Plotting
+plt.bar(range(0, 7), prob, color="skyblue", edgecolor="black")
+plt.xlabel("Number of mails")
+plt.ylabel("Probability")
+plt.title("Poisson Distribution (λ=3)")
+plt.show()
